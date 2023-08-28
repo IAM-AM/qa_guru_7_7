@@ -1,17 +1,18 @@
+import os.path
 import pypdf
 from conftest import RESOURCE_ROOT_PATH
 
 
-# TODO оформить в тест, добавить ассерты и использовать универсальный путь
-
 def test_pdf_file():
-    reader = pypdf.PdfReader('resources/docs-pytest-org-en-latest.pdf')
+    file_path = os.path.join(RESOURCE_ROOT_PATH, "docs-pytest-org-en-latest.pdf")
+    reader = pypdf.PdfReader(file_path)
 
     number_of_pages = len(reader.pages)
     first_page = reader.pages[0]
     text = first_page.extract_text()
 
     count = 0
+
     for image_file in first_page.images:
         with open(str(count) + image_file.name, 'wb') as fp:
             fp.write(image_file.data)
@@ -23,3 +24,6 @@ def test_pdf_file():
             'Release 0.1\n'
             'holger krekel, trainer and consultant, https://merlinux.eu/\n'
             'Jul 14, 2022')
+    assert os.path.isfile(file_path)
+    assert count == 1
+    assert file_path.endswith('.pdf')
