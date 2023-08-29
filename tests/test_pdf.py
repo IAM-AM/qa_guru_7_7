@@ -27,3 +27,5 @@ def test_pdf_file():
     assert os.path.isfile(file_path)
     assert count == 1
     assert file_path.endswith('.pdf')
+
+    os.remove(file_path)
