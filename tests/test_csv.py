@@ -27,3 +27,4 @@ def test_csv_file():
     finally:
         if os.path.exists(csv_path):
             os.remove(csv_path)
+
