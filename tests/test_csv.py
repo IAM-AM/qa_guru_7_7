@@ -1,13 +1,13 @@
 import csv
 import os.path
-from tests.conftest import RESOURCE_ROOT_PATH
+from tests.conftest import PROJECT_ROOT_PATH
 
 
 # TODO оформить в тест, добавить ассерты и использовать универсальный путь
 
 
 def test_csv_file():
-    csv_path = os.path.join(RESOURCE_ROOT_PATH, 'test_csv.py')
+    csv_path = os.path.join(PROJECT_ROOT_PATH, 'test_csv.py')
     names = [
         ['Bonny', 'Pavel', 'Peter'],
         ['Alex', 'Serj', 'Yana']

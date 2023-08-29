@@ -20,7 +20,7 @@ def test_xls_file():
 
     assert os.path.isfile(file_path)
     assert book.nsheets == 1
-    # assert book.sheet_names == 'Sheet1'
+    assert book.sheet_names() == ['Sheet1']
     assert sheet.ncols == 8
     assert sheet.nrows == 10
     assert sheet.cell_value(rowx=4, colx=1) == "Kathleen"
