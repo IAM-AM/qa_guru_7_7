@@ -1,30 +1,29 @@
 import csv
 import os.path
-from tests.conftest import PROJECT_ROOT_PATH
+from tests.conftest import RESOURCE_ROOT_PATH
 
 
 # TODO оформить в тест, добавить ассерты и использовать универсальный путь
 
 
 def test_csv_file():
-    csv_path = os.path.join(PROJECT_ROOT_PATH, 'test_csv.py')
+    csv_path = os.path.join(RESOURCE_ROOT_PATH, 'test_csv.py')
+
     names = [
         ['Bonny', 'Pavel', 'Peter'],
         ['Alex', 'Serj', 'Yana']
     ]
-    try:
-        with open(csv_path, "w") as file:
-            csvwriter = csv.writer(file, delimiter=',')
-            csvwriter.writerows(names)
 
-        with open(csv_path) as file:
-            csvreader = csv.reader(file)
-            actual_names = [row for row in csvreader]
+    with open(csv_path, "w", newline='') as file:
+        csvwriter = csv.writer(file, delimiter=',')
+        csvwriter.writerows(names)
 
-        assert actual_names == names, "Ожидаемые имена отсутствуют в списке"
-        assert os.path.exists(csv_path)
+    with open(csv_path) as file:
+        csvreader = csv.reader(file)
+        actual_names = [row for row in csvreader]
 
-    finally:
-        if os.path.exists(csv_path):
-            os.remove(csv_path)
+    assert actual_names == names, "Ожидаемые имена отсутствуют в списке"
+
+    os.remove(os.path.abspath(csv_path))
+
 
