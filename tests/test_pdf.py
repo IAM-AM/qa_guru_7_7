@@ -14,8 +14,9 @@ def test_pdf_file():
     count = 0
 
     for image_file in first_page.images:
-        with open(str(count) + image_file.name, 'wb') as fp:
+        with open(os.path.join(RESOURCE_ROOT_PATH, str(count) + image_file.name), 'wb') as fp:
             fp.write(image_file.data)
+            img_path = os.path.join(RESOURCE_ROOT_PATH, str(count) + image_file.name)
             count += 1
 
     assert number_of_pages == 412
@@ -28,4 +29,4 @@ def test_pdf_file():
     assert count == 1
     assert file_path.endswith('.pdf')
 
-    os.remove(file_path)
+    os.remove(os.path.abspath(img_path))

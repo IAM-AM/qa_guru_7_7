@@ -25,6 +25,5 @@ def test_xls_file():
     assert sheet.nrows == 10
     assert sheet.cell_value(rowx=4, colx=1) == "Kathleen"
 
-    os.remove(file_path)
     # for rx in range(sheet.nrows):
     #     print(sheet.row(rx))

@@ -14,5 +14,3 @@ def test_xlsx_file():
     assert os.path.isfile(file_path)
     assert sheet.cell(row=3, column=2).value == "Mara"
     assert file_path.endswith('.xlsx')
-
-    os.remove(file_path)

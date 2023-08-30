@@ -19,12 +19,6 @@ def test_zip_file():
     assert listname == ['hello.txt']
     assert text == 'world'
 
-    # os.remove(file_path)
-
-
-test_zip_file()
-
-
 def test_zip_file_archivation():
     tmp_dir = "tmp"
     os.makedirs(tmp_dir, exist_ok=True)
@@ -42,7 +36,4 @@ def test_zip_file_archivation():
 
             assert file in zip_file.namelist()
 
-        shutil.rmtree(tmp_dir)
-
-
-test_zip_file_archivation()
+    os.remove(os.path.abspath(tmp_path))
